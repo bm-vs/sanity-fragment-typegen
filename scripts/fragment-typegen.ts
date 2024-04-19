@@ -98,3 +98,5 @@ const closureMapToTypes = (closureMap: ClosureMap) => {
 		'',
 	);
 };
+
+fragmentTypegen();

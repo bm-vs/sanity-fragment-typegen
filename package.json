@@ -8,7 +8,7 @@
     "typegen": "bun run schema:extract && bun run typegen:generate",
     "schema:extract": "sanity schema extract --path='./typegen/schema.json'",
     "typegen:generate": "sanity typegen generate",
-    "posttypegen": "bun run ./scripts/index.ts"
+    "posttypegen": "bun run ./scripts/fragment-typegen.ts"
   },
   "keywords": [
     "sanity"
