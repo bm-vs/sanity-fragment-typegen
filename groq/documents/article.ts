@@ -1,5 +1,6 @@
 import {articleFeedFragment} from '@/groq/documents/article-feed';
 import {richPortableTextFragment} from '@/groq/types/rich-portable-text';
+import { imageWebFragment } from '@/groq/types/image-web';
 
 export const articleFragment = `//groq
     _id,
@@ -8,7 +9,9 @@ export const articleFragment = `//groq
     slug,
     heading,
     lead,
-    image,
+    image {
+        ${imageWebFragment}
+    },
     content[] {
         ${richPortableTextFragment}
     },

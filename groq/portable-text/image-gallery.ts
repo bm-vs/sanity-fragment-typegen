@@ -1,9 +1,12 @@
 import {basicPortableTextFragment} from '@/groq/types/basic-portable-text';
+import { imageWebFragment } from '@/groq/types/image-web';
 
 export const imageGalleryFragment = `//groq
 	_type,
 	title,
-	images,
+	images[] {
+		${imageWebFragment}
+	},
 	text[] {
 		${basicPortableTextFragment}
 	},

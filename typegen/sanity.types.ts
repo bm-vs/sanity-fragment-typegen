@@ -535,7 +535,7 @@ export type GetArticleListFromFeedPageResult = Array<{
 
 // Source: groq/get-article-page.ts
 // Variable: getArticlePageBySlugQuery
-// Query: 	{		'website': *[_type == 'website' && _id == 'websiteSingleton'][0] {            //groq    _id,    title,    frontPage->{        title,        slug,    },    mainMenu[] {        _type == 'internalLink' => {            //groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}        },        _type == 'externalLink' => {            //groq	_type,	text,	url,	'_ts': 'SanityExternalLink'        }    },    contactInfo {        orgName,        orgNr,        address,        postalCode,        city,    },    '_ts': 'SanityWebsite'        },		'article': *[ _type == 'article' && slug.current == $articleSlug][0] {			//groq    _id,    _type,    title,    slug,    heading,    lead,    image,    content[] {        //groq	_type == "articleListAll" => {		//groq	_type,	title,	'firstPage': {		'articles': *[_type == 'article'] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article']), 0)	},	'_ts': 'SanityArticleListAll'	},	_type == "articleListFromFeed" => {		//groq	_type,	title,	articleFeed-> {		//groq    _id,    name,    '_ts': 'SanityArticleFeed'	},	'firstPage': {		'articles': *[_type == 'article' && references(^.articleFeed._ref)] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article' && references(^.articleFeed._ref)]), 0)	},	'_ts': 'SanityArticleListFromFeed'	},	_type == "articleListSelection" => {		//groq	_type,	title,	articles[]-> {		//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'	},	'_ts': 'SanityArticleListSelection'	},	_type == "extendedBlock" => {		//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	_type == "featuredQuote" => {		//groq    _id,    _type,    name,    person,    quote,    image,	'_ts': 'SanityFeaturedQuote'	},	_type == "imageGallery" => {		//groq	_type,	title,	images,	text[] {		//groq	//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	aspectRatio,	'_ts': 'SanityImageGallery'	},	_type == "productListAll" => {		//groq	_type,	title,	'products': *[_type == 'product'] | order(name desc) {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListAll'	},	_type == "productListSelection" => {		//groq	_type,	products[]-> {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListSelection'	},	_type == "searchBox" => {		//groq	_key,	_type,	title,	'_ts': 'SanitySearchBox'	},	_type == "youTubeVideo" => {		//groq	_type,	url,	'_ts': 'SanityYouTubeVideo'	},    },    articleFeeds[]-> {        //groq    _id,    name,    '_ts': 'SanityArticleFeed'    },	'_ts': 'SanityArticle'		}	}
+// Query: 	{		'website': *[_type == 'website' && _id == 'websiteSingleton'][0] {            //groq    _id,    title,    frontPage->{        title,        slug,    },    mainMenu[] {        _type == 'internalLink' => {            //groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}        },        _type == 'externalLink' => {            //groq	_type,	text,	url,	'_ts': 'SanityExternalLink'        }    },    contactInfo {        orgName,        orgNr,        address,        postalCode,        city,    },    '_ts': 'SanityWebsite'        },		'article': *[ _type == 'article' && slug.current == $articleSlug][0] {			//groq    _id,    _type,    title,    slug,    heading,    lead,    image {        //groq    _type,	asset,    hotspot,    crop,    altText,    credit,    caption,	'_ts': 'SanityImageWeb'    },    content[] {        //groq	_type == "articleListAll" => {		//groq	_type,	title,	'firstPage': {		'articles': *[_type == 'article'] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article']), 0)	},	'_ts': 'SanityArticleListAll'	},	_type == "articleListFromFeed" => {		//groq	_type,	title,	articleFeed-> {		//groq    _id,    name,    '_ts': 'SanityArticleFeed'	},	'firstPage': {		'articles': *[_type == 'article' && references(^.articleFeed._ref)] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article' && references(^.articleFeed._ref)]), 0)	},	'_ts': 'SanityArticleListFromFeed'	},	_type == "articleListSelection" => {		//groq	_type,	title,	articles[]-> {		//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'	},	'_ts': 'SanityArticleListSelection'	},	_type == "extendedBlock" => {		//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	_type == "featuredQuote" => {		//groq    _type,    name,    person,    quote,    image {        //groq    _type,	asset,    hotspot,    crop,    altText,    credit,    caption,	'_ts': 'SanityImageWeb'    },	'_ts': 'SanityFeaturedQuote'	},	_type == "imageGallery" => {		//groq	_type,	title,	images[] {		//groq    _type,	asset,    hotspot,    crop,    altText,    credit,    caption,	'_ts': 'SanityImageWeb'	},	text[] {		//groq	//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	aspectRatio,	'_ts': 'SanityImageGallery'	},	_type == "productListAll" => {		//groq	_type,	title,	'products': *[_type == 'product'] | order(name desc) {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListAll'	},	_type == "productListSelection" => {		//groq	_type,	products[]-> {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListSelection'	},	_type == "searchBox" => {		//groq	_key,	_type,	title,	'_ts': 'SanitySearchBox'	},	_type == "youTubeVideo" => {		//groq	_type,	url,	'_ts': 'SanityYouTubeVideo'	},    },    articleFeeds[]-> {        //groq    _id,    name,    '_ts': 'SanityArticleFeed'    },	'_ts': 'SanityArticle'		}	}
 export type GetArticlePageBySlugQueryResult = {
   website: {
     _id: string;
@@ -587,41 +587,21 @@ export type GetArticlePageBySlugQueryResult = {
     heading: string | null;
     lead: string | null;
     image: {
-      asset?: {
+      _type: "imageWeb";
+      asset: {
         _ref: string;
         _type: "reference";
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      altText?: string;
-      credit?: string;
-      caption?: string;
-      _type: "imageWeb";
+      } | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      altText: string | null;
+      credit: string | null;
+      caption: string | null;
+      _ts: "SanityImageWeb";
     } | null;
     content: Array<{
-      _id: null;
-      _type: "featuredQuote";
-      name: string | null;
-      person: string | null;
-      quote: string | null;
-      image: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        altText?: string;
-        credit?: string;
-        caption?: string;
-        _type: "imageWeb";
-      } | null;
-      _ts: "SanityFeaturedQuote";
-    } | {
       _key: string;
       _type: "searchBox";
       title: string | null;
@@ -756,22 +736,43 @@ export type GetArticlePageBySlugQueryResult = {
       level: number | null;
       _ts: "SanityExtendedBlock";
     } | {
-      _type: "imageGallery";
-      title: string | null;
-      images: Array<{
-        asset?: {
+      _type: "featuredQuote";
+      name: string | null;
+      person: string | null;
+      quote: string | null;
+      image: {
+        _type: "imageWeb";
+        asset: {
           _ref: string;
           _type: "reference";
           _weak?: boolean;
           [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        altText?: string;
-        credit?: string;
-        caption?: string;
+        } | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        altText: string | null;
+        credit: string | null;
+        caption: string | null;
+        _ts: "SanityImageWeb";
+      } | null;
+      _ts: "SanityFeaturedQuote";
+    } | {
+      _type: "imageGallery";
+      title: string | null;
+      images: Array<{
         _type: "imageWeb";
-        _key: string;
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        altText: string | null;
+        credit: string | null;
+        caption: string | null;
+        _ts: "SanityImageWeb";
       }> | null;
       text: Array<{
         _type: "extendedBlock";
@@ -885,7 +886,7 @@ export type GetArticlePageBySlugQueryResult = {
 
 // Source: groq/get-page.ts
 // Variable: getPageBySlugQuery
-// Query: 	{		'website': *[_type == 'website' && _id == 'websiteSingleton'][0] {            //groq    _id,    title,    frontPage->{        title,        slug,    },    mainMenu[] {        _type == 'internalLink' => {            //groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}        },        _type == 'externalLink' => {            //groq	_type,	text,	url,	'_ts': 'SanityExternalLink'        }    },    contactInfo {        orgName,        orgNr,        address,        postalCode,        city,    },    '_ts': 'SanityWebsite'        },		'page': *[ _type == 'page' && slug.current == $slug][0] {			//groq    _id,    title,    slug,    headers[] {        _type == 'contentHeader' => {            //groq	_type,	heading,	lead,	shortcuts[] {		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	'_ts': 'SanityContentHeader'        },        _type == 'imageHeader' => {            //groq	_type,	heading,	lead,	image,	style,	'_ts': 'SanityImageHeader'        }    },    content[] {        //groq	_type == "articleListAll" => {		//groq	_type,	title,	'firstPage': {		'articles': *[_type == 'article'] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article']), 0)	},	'_ts': 'SanityArticleListAll'	},	_type == "articleListFromFeed" => {		//groq	_type,	title,	articleFeed-> {		//groq    _id,    name,    '_ts': 'SanityArticleFeed'	},	'firstPage': {		'articles': *[_type == 'article' && references(^.articleFeed._ref)] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article' && references(^.articleFeed._ref)]), 0)	},	'_ts': 'SanityArticleListFromFeed'	},	_type == "articleListSelection" => {		//groq	_type,	title,	articles[]-> {		//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'	},	'_ts': 'SanityArticleListSelection'	},	_type == "extendedBlock" => {		//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	_type == "featuredQuote" => {		//groq    _id,    _type,    name,    person,    quote,    image,	'_ts': 'SanityFeaturedQuote'	},	_type == "imageGallery" => {		//groq	_type,	title,	images,	text[] {		//groq	//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	aspectRatio,	'_ts': 'SanityImageGallery'	},	_type == "productListAll" => {		//groq	_type,	title,	'products': *[_type == 'product'] | order(name desc) {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListAll'	},	_type == "productListSelection" => {		//groq	_type,	products[]-> {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListSelection'	},	_type == "searchBox" => {		//groq	_key,	_type,	title,	'_ts': 'SanitySearchBox'	},	_type == "youTubeVideo" => {		//groq	_type,	url,	'_ts': 'SanityYouTubeVideo'	},    },    '_ts': 'SanityPage'		}	}
+// Query: 	{		'website': *[_type == 'website' && _id == 'websiteSingleton'][0] {            //groq    _id,    title,    frontPage->{        title,        slug,    },    mainMenu[] {        _type == 'internalLink' => {            //groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}        },        _type == 'externalLink' => {            //groq	_type,	text,	url,	'_ts': 'SanityExternalLink'        }    },    contactInfo {        orgName,        orgNr,        address,        postalCode,        city,    },    '_ts': 'SanityWebsite'        },		'page': *[ _type == 'page' && slug.current == $slug][0] {			//groq    _id,    title,    slug,    headers[] {        _type == 'contentHeader' => {            //groq	_type,	heading,	lead,	shortcuts[] {		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	'_ts': 'SanityContentHeader'        },        _type == 'imageHeader' => {            //groq	_type,	heading,	lead,	image {		//groq    _type,	asset,    hotspot,    crop,    altText,    credit,    caption,	'_ts': 'SanityImageWeb'	},	style,	'_ts': 'SanityImageHeader'        }    },    content[] {        //groq	_type == "articleListAll" => {		//groq	_type,	title,	'firstPage': {		'articles': *[_type == 'article'] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article']), 0)	},	'_ts': 'SanityArticleListAll'	},	_type == "articleListFromFeed" => {		//groq	_type,	title,	articleFeed-> {		//groq    _id,    name,    '_ts': 'SanityArticleFeed'	},	'firstPage': {		'articles': *[_type == 'article' && references(^.articleFeed._ref)] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article' && references(^.articleFeed._ref)]), 0)	},	'_ts': 'SanityArticleListFromFeed'	},	_type == "articleListSelection" => {		//groq	_type,	title,	articles[]-> {		//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'	},	'_ts': 'SanityArticleListSelection'	},	_type == "extendedBlock" => {		//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	_type == "featuredQuote" => {		//groq    _type,    name,    person,    quote,    image {        //groq    _type,	asset,    hotspot,    crop,    altText,    credit,    caption,	'_ts': 'SanityImageWeb'    },	'_ts': 'SanityFeaturedQuote'	},	_type == "imageGallery" => {		//groq	_type,	title,	images[] {		//groq    _type,	asset,    hotspot,    crop,    altText,    credit,    caption,	'_ts': 'SanityImageWeb'	},	text[] {		//groq	//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	aspectRatio,	'_ts': 'SanityImageGallery'	},	_type == "productListAll" => {		//groq	_type,	title,	'products': *[_type == 'product'] | order(name desc) {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListAll'	},	_type == "productListSelection" => {		//groq	_type,	products[]-> {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListSelection'	},	_type == "searchBox" => {		//groq	_key,	_type,	title,	'_ts': 'SanitySearchBox'	},	_type == "youTubeVideo" => {		//groq	_type,	url,	'_ts': 'SanityYouTubeVideo'	},    },    '_ts': 'SanityPage'		}	}
 export type GetPageBySlugQueryResult = {
   website: {
     _id: string;
@@ -969,44 +970,24 @@ export type GetPageBySlugQueryResult = {
       heading: string | null;
       lead: string | null;
       image: {
-        asset?: {
+        _type: "imageWeb";
+        asset: {
           _ref: string;
           _type: "reference";
           _weak?: boolean;
           [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        altText?: string;
-        credit?: string;
-        caption?: string;
-        _type: "imageWeb";
+        } | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        altText: string | null;
+        credit: string | null;
+        caption: string | null;
+        _ts: "SanityImageWeb";
       } | null;
       style: "STYLE_MEDIA_FOCUS" | "STYLE_TEXT_FOCUS" | null;
       _ts: "SanityImageHeader";
     }> | null;
     content: Array<{
-      _id: null;
-      _type: "featuredQuote";
-      name: string | null;
-      person: string | null;
-      quote: string | null;
-      image: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        altText?: string;
-        credit?: string;
-        caption?: string;
-        _type: "imageWeb";
-      } | null;
-      _ts: "SanityFeaturedQuote";
-    } | {
       _key: string;
       _type: "searchBox";
       title: string | null;
@@ -1141,22 +1122,43 @@ export type GetPageBySlugQueryResult = {
       level: number | null;
       _ts: "SanityExtendedBlock";
     } | {
-      _type: "imageGallery";
-      title: string | null;
-      images: Array<{
-        asset?: {
+      _type: "featuredQuote";
+      name: string | null;
+      person: string | null;
+      quote: string | null;
+      image: {
+        _type: "imageWeb";
+        asset: {
           _ref: string;
           _type: "reference";
           _weak?: boolean;
           [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        altText?: string;
-        credit?: string;
-        caption?: string;
+        } | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        altText: string | null;
+        credit: string | null;
+        caption: string | null;
+        _ts: "SanityImageWeb";
+      } | null;
+      _ts: "SanityFeaturedQuote";
+    } | {
+      _type: "imageGallery";
+      title: string | null;
+      images: Array<{
         _type: "imageWeb";
-        _key: string;
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        altText: string | null;
+        credit: string | null;
+        caption: string | null;
+        _ts: "SanityImageWeb";
       }> | null;
       text: Array<{
         _type: "extendedBlock";
@@ -1265,7 +1267,7 @@ export type GetPageBySlugQueryResult = {
 
 // Source: groq/get-product-page.ts
 // Variable: getProductPageBySlugQuery
-// Query: 	{		'website': *[_type == 'website' && _id == 'websiteSingleton'][0] {            //groq    _id,    title,    frontPage->{        title,        slug,    },    mainMenu[] {        _type == 'internalLink' => {            //groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}        },        _type == 'externalLink' => {            //groq	_type,	text,	url,	'_ts': 'SanityExternalLink'        }    },    contactInfo {        orgName,        orgNr,        address,        postalCode,        city,    },    '_ts': 'SanityWebsite'        },		'product': *[ _type == 'product' && slug.current == $slug][0] {			//groq    _id,    _type,    name,    slug,    tagline,    description[] {        //groq	//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'    },    mainImage,    tag,    content[] {        //groq	_type == "articleListAll" => {		//groq	_type,	title,	'firstPage': {		'articles': *[_type == 'article'] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article']), 0)	},	'_ts': 'SanityArticleListAll'	},	_type == "articleListFromFeed" => {		//groq	_type,	title,	articleFeed-> {		//groq    _id,    name,    '_ts': 'SanityArticleFeed'	},	'firstPage': {		'articles': *[_type == 'article' && references(^.articleFeed._ref)] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article' && references(^.articleFeed._ref)]), 0)	},	'_ts': 'SanityArticleListFromFeed'	},	_type == "articleListSelection" => {		//groq	_type,	title,	articles[]-> {		//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'	},	'_ts': 'SanityArticleListSelection'	},	_type == "extendedBlock" => {		//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	_type == "featuredQuote" => {		//groq    _id,    _type,    name,    person,    quote,    image,	'_ts': 'SanityFeaturedQuote'	},	_type == "imageGallery" => {		//groq	_type,	title,	images,	text[] {		//groq	//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	aspectRatio,	'_ts': 'SanityImageGallery'	},	_type == "productListAll" => {		//groq	_type,	title,	'products': *[_type == 'product'] | order(name desc) {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListAll'	},	_type == "productListSelection" => {		//groq	_type,	products[]-> {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListSelection'	},	_type == "searchBox" => {		//groq	_key,	_type,	title,	'_ts': 'SanitySearchBox'	},	_type == "youTubeVideo" => {		//groq	_type,	url,	'_ts': 'SanityYouTubeVideo'	},    },    supplementaryContent[] {        //groq	_type == "articleListAll" => {		//groq	_type,	title,	'firstPage': {		'articles': *[_type == 'article'] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article']), 0)	},	'_ts': 'SanityArticleListAll'	},	_type == "articleListFromFeed" => {		//groq	_type,	title,	articleFeed-> {		//groq    _id,    name,    '_ts': 'SanityArticleFeed'	},	'firstPage': {		'articles': *[_type == 'article' && references(^.articleFeed._ref)] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article' && references(^.articleFeed._ref)]), 0)	},	'_ts': 'SanityArticleListFromFeed'	},	_type == "articleListSelection" => {		//groq	_type,	title,	articles[]-> {		//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'	},	'_ts': 'SanityArticleListSelection'	},	_type == "extendedBlock" => {		//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	_type == "featuredQuote" => {		//groq    _id,    _type,    name,    person,    quote,    image,	'_ts': 'SanityFeaturedQuote'	},	_type == "imageGallery" => {		//groq	_type,	title,	images,	text[] {		//groq	//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	aspectRatio,	'_ts': 'SanityImageGallery'	},	_type == "productListAll" => {		//groq	_type,	title,	'products': *[_type == 'product'] | order(name desc) {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListAll'	},	_type == "productListSelection" => {		//groq	_type,	products[]-> {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListSelection'	},	_type == "searchBox" => {		//groq	_key,	_type,	title,	'_ts': 'SanitySearchBox'	},	_type == "youTubeVideo" => {		//groq	_type,	url,	'_ts': 'SanityYouTubeVideo'	},    },	'_ts': 'SanityProduct'		}	}
+// Query: 	{		'website': *[_type == 'website' && _id == 'websiteSingleton'][0] {            //groq    _id,    title,    frontPage->{        title,        slug,    },    mainMenu[] {        _type == 'internalLink' => {            //groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}        },        _type == 'externalLink' => {            //groq	_type,	text,	url,	'_ts': 'SanityExternalLink'        }    },    contactInfo {        orgName,        orgNr,        address,        postalCode,        city,    },    '_ts': 'SanityWebsite'        },		'product': *[ _type == 'product' && slug.current == $slug][0] {			//groq    _id,    _type,    name,    slug,    tagline,    description[] {        //groq	//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'    },    mainImage {        //groq    _type,	asset,    hotspot,    crop,    altText,    credit,    caption,	'_ts': 'SanityImageWeb'    },    tag,    content[] {        //groq	_type == "articleListAll" => {		//groq	_type,	title,	'firstPage': {		'articles': *[_type == 'article'] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article']), 0)	},	'_ts': 'SanityArticleListAll'	},	_type == "articleListFromFeed" => {		//groq	_type,	title,	articleFeed-> {		//groq    _id,    name,    '_ts': 'SanityArticleFeed'	},	'firstPage': {		'articles': *[_type == 'article' && references(^.articleFeed._ref)] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article' && references(^.articleFeed._ref)]), 0)	},	'_ts': 'SanityArticleListFromFeed'	},	_type == "articleListSelection" => {		//groq	_type,	title,	articles[]-> {		//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'	},	'_ts': 'SanityArticleListSelection'	},	_type == "extendedBlock" => {		//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	_type == "featuredQuote" => {		//groq    _type,    name,    person,    quote,    image {        //groq    _type,	asset,    hotspot,    crop,    altText,    credit,    caption,	'_ts': 'SanityImageWeb'    },	'_ts': 'SanityFeaturedQuote'	},	_type == "imageGallery" => {		//groq	_type,	title,	images[] {		//groq    _type,	asset,    hotspot,    crop,    altText,    credit,    caption,	'_ts': 'SanityImageWeb'	},	text[] {		//groq	//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	aspectRatio,	'_ts': 'SanityImageGallery'	},	_type == "productListAll" => {		//groq	_type,	title,	'products': *[_type == 'product'] | order(name desc) {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListAll'	},	_type == "productListSelection" => {		//groq	_type,	products[]-> {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListSelection'	},	_type == "searchBox" => {		//groq	_key,	_type,	title,	'_ts': 'SanitySearchBox'	},	_type == "youTubeVideo" => {		//groq	_type,	url,	'_ts': 'SanityYouTubeVideo'	},    },    supplementaryContent[] {        //groq	_type == "articleListAll" => {		//groq	_type,	title,	'firstPage': {		'articles': *[_type == 'article'] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article']), 0)	},	'_ts': 'SanityArticleListAll'	},	_type == "articleListFromFeed" => {		//groq	_type,	title,	articleFeed-> {		//groq    _id,    name,    '_ts': 'SanityArticleFeed'	},	'firstPage': {		'articles': *[_type == 'article' && references(^.articleFeed._ref)] | order(_createdAt desc)[0...12] {			//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'		},		'totalCount': coalesce(count(*[_type == 'article' && references(^.articleFeed._ref)]), 0)	},	'_ts': 'SanityArticleListFromFeed'	},	_type == "articleListSelection" => {		//groq	_type,	title,	articles[]-> {		//groq    _id,    _type,    slug,    heading,    lead,    image,	'_ts': 'SanityArticleInCard'	},	'_ts': 'SanityArticleListSelection'	},	_type == "extendedBlock" => {		//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	_type == "featuredQuote" => {		//groq    _type,    name,    person,    quote,    image {        //groq    _type,	asset,    hotspot,    crop,    altText,    credit,    caption,	'_ts': 'SanityImageWeb'    },	'_ts': 'SanityFeaturedQuote'	},	_type == "imageGallery" => {		//groq	_type,	title,	images[] {		//groq    _type,	asset,    hotspot,    crop,    altText,    credit,    caption,	'_ts': 'SanityImageWeb'	},	text[] {		//groq	//groq	_type,	children,	style,	listItem,	markDefs[] {		_key,		_type == 'externalLink' => {			//groq	_type,	text,	url,	'_ts': 'SanityExternalLink'		},		_type == 'internalLink' => {			//groq	reference->{		_id,		_type,		slug,		'title': coalesce(title, name),		'_ts': 'SanityInternalLink' + _type	}		}	},	level,	'_ts': 'SanityExtendedBlock'	},	aspectRatio,	'_ts': 'SanityImageGallery'	},	_type == "productListAll" => {		//groq	_type,	title,	'products': *[_type == 'product'] | order(name desc) {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListAll'	},	_type == "productListSelection" => {		//groq	_type,	products[]-> {		//groq    _id,    _type,    name,    slug,    tagline,    mainImage,    tag,	'_ts': 'SanityProductInCard'	},	'_ts': 'SanityProductListSelection'	},	_type == "searchBox" => {		//groq	_key,	_type,	title,	'_ts': 'SanitySearchBox'	},	_type == "youTubeVideo" => {		//groq	_type,	url,	'_ts': 'SanityYouTubeVideo'	},    },	'_ts': 'SanityProduct'		}	}
 export type GetProductPageBySlugQueryResult = {
   website: {
     _id: string;
@@ -1357,42 +1359,22 @@ export type GetProductPageBySlugQueryResult = {
       _ts: "SanityExtendedBlock";
     }> | null;
     mainImage: {
-      asset?: {
+      _type: "imageWeb";
+      asset: {
         _ref: string;
         _type: "reference";
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      altText?: string;
-      credit?: string;
-      caption?: string;
-      _type: "imageWeb";
+      } | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      altText: string | null;
+      credit: string | null;
+      caption: string | null;
+      _ts: "SanityImageWeb";
     } | null;
     tag: string | null;
     content: Array<{
-      _id: null;
-      _type: "featuredQuote";
-      name: string | null;
-      person: string | null;
-      quote: string | null;
-      image: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        altText?: string;
-        credit?: string;
-        caption?: string;
-        _type: "imageWeb";
-      } | null;
-      _ts: "SanityFeaturedQuote";
-    } | {
       _key: string;
       _type: "searchBox";
       title: string | null;
@@ -1527,22 +1509,43 @@ export type GetProductPageBySlugQueryResult = {
       level: number | null;
       _ts: "SanityExtendedBlock";
     } | {
-      _type: "imageGallery";
-      title: string | null;
-      images: Array<{
-        asset?: {
+      _type: "featuredQuote";
+      name: string | null;
+      person: string | null;
+      quote: string | null;
+      image: {
+        _type: "imageWeb";
+        asset: {
           _ref: string;
           _type: "reference";
           _weak?: boolean;
           [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        altText?: string;
-        credit?: string;
-        caption?: string;
+        } | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        altText: string | null;
+        credit: string | null;
+        caption: string | null;
+        _ts: "SanityImageWeb";
+      } | null;
+      _ts: "SanityFeaturedQuote";
+    } | {
+      _type: "imageGallery";
+      title: string | null;
+      images: Array<{
         _type: "imageWeb";
-        _key: string;
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        altText: string | null;
+        credit: string | null;
+        caption: string | null;
+        _ts: "SanityImageWeb";
       }> | null;
       text: Array<{
         _type: "extendedBlock";
@@ -1646,27 +1649,6 @@ export type GetProductPageBySlugQueryResult = {
       _ts: "SanityYouTubeVideo";
     }> | null;
     supplementaryContent: Array<{
-      _id: null;
-      _type: "featuredQuote";
-      name: string | null;
-      person: string | null;
-      quote: string | null;
-      image: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        altText?: string;
-        credit?: string;
-        caption?: string;
-        _type: "imageWeb";
-      } | null;
-      _ts: "SanityFeaturedQuote";
-    } | {
       _key: string;
       _type: "searchBox";
       title: string | null;
@@ -1801,22 +1783,43 @@ export type GetProductPageBySlugQueryResult = {
       level: number | null;
       _ts: "SanityExtendedBlock";
     } | {
-      _type: "imageGallery";
-      title: string | null;
-      images: Array<{
-        asset?: {
+      _type: "featuredQuote";
+      name: string | null;
+      person: string | null;
+      quote: string | null;
+      image: {
+        _type: "imageWeb";
+        asset: {
           _ref: string;
           _type: "reference";
           _weak?: boolean;
           [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        altText?: string;
-        credit?: string;
-        caption?: string;
+        } | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        altText: string | null;
+        credit: string | null;
+        caption: string | null;
+        _ts: "SanityImageWeb";
+      } | null;
+      _ts: "SanityFeaturedQuote";
+    } | {
+      _type: "imageGallery";
+      title: string | null;
+      images: Array<{
         _type: "imageWeb";
-        _key: string;
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        altText: string | null;
+        credit: string | null;
+        caption: string | null;
+        _ts: "SanityImageWeb";
       }> | null;
       text: Array<{
         _type: "extendedBlock";

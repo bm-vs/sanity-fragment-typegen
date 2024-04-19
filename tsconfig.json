@@ -15,6 +15,7 @@
     "paths": {
       "@/groq/*": ["groq/*"],
       "@/schema/*": ["schema/*"],
+      "@/scripts/*": ["scripts/*"],
     },
   },
   "include": ["**/*.ts", "**/*.tsx"],

@@ -1,9 +1,12 @@
+import { imageWebFragment } from '@/groq/types/image-web';
+
 export const featuredQuoteFragment = `//groq
-    _id,
     _type,
     name,
     person,
     quote,
-    image,
+    image {
+        ${imageWebFragment}
+    },
 	'_ts': 'SanityFeaturedQuote'
 `;

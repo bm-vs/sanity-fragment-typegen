@@ -5,10 +5,10 @@
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
-    "typegen": "bun run schema:extract && bun run typegen:generate && bun run typegen:min",
+    "typegen": "bun run schema:extract && bun run typegen:generate",
     "schema:extract": "sanity schema extract --path='./typegen/schema.json'",
     "typegen:generate": "sanity typegen generate",
-    "typegen:min": "bun run ./scripts/typegen-min.ts"
+    "posttypegen": "bun run ./scripts/index.ts"
   },
   "keywords": [
     "sanity"

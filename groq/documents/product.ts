@@ -1,5 +1,6 @@
 import {basicPortableTextFragment} from '@/groq/types/basic-portable-text';
 import {richPortableTextFragment} from '@/groq/types/rich-portable-text';
+import { imageWebFragment } from '@/groq/types/image-web';
 
 export const productFragment = `//groq
     _id,
@@ -10,7 +11,9 @@ export const productFragment = `//groq
     description[] {
         ${basicPortableTextFragment}
     },
-    mainImage,
+    mainImage {
+        ${imageWebFragment}
+    },
     tag,
     content[] {
         ${richPortableTextFragment}
