@@ -1,5 +1,5 @@
-import {basicPortableTextFragment} from '../types/basic-portable-text';
-import {richPortableTextFragment} from '../types/rich-portable-text';
+import {basicPortableTextFragment} from '@/groq/types/basic-portable-text';
+import {richPortableTextFragment} from '@/groq/types/rich-portable-text';
 
 export const productFragment = `//groq
     _id,

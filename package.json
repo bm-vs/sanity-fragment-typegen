@@ -1,15 +1,14 @@
 {
-  "name": "day-one-with-sanity",
+  "name": "sanity-fragment-typegen",
   "private": true,
   "version": "1.0.0",
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "sanity dev",
-    "start": "sanity start",
-    "build": "sanity build",
-    "deploy": "sanity deploy",
-    "deploy-graphql": "sanity graphql deploy"
+    "typegen": "bun run schema:extract && bun run typegen:generate && bun run typegen:min",
+    "schema:extract": "sanity schema extract --path='./typegen/schema.json'",
+    "typegen:generate": "sanity typegen generate",
+    "typegen:min": "bun run ./scripts/typegen-min.ts"
   },
   "keywords": [
     "sanity"

@@ -1,6 +1,6 @@
-import {contentHeaderFragment} from '../types/content-header';
-import {imageHeaderFragment} from '../types/image-header';
-import {richPortableTextFragment} from '../types/rich-portable-text';
+import {contentHeaderFragment} from '@/groq/types/content-header';
+import {imageHeaderFragment} from '@/groq/types/image-header';
+import {richPortableTextFragment} from '@/groq/types/rich-portable-text';
 
 export const pageFragment = `//groq
     _id,

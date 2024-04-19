@@ -1,4 +1,4 @@
-import {articleInCardFragment} from '../documents/article-in-card';
+import {articleInCardFragment} from '@/groq/documents/article-in-card';
 
 export const articleListAllFragment = `//groq
 	_type,

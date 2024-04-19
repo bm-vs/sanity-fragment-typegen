@@ -1,5 +1,5 @@
-import {articleFeedFragment} from '../documents/article-feed';
-import {articleInCardFragment} from '../documents/article-in-card';
+import {articleFeedFragment} from '@/groq/documents/article-feed';
+import {articleInCardFragment} from '@/groq/documents/article-in-card';
 
 export const articleListFromFeedFragment = `//groq
 	_type,

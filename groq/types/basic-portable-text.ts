@@ -1,4 +1,4 @@
-import {extendedBlockFragment} from '../portable-text/extended-block';
+import {extendedBlockFragment} from '@/groq/portable-text/extended-block';
 
 export const basicPortableTextFragment = `//groq
 	${extendedBlockFragment}

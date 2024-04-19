@@ -1,5 +1,5 @@
-import {articleFeedFragment} from './article-feed';
-import {richPortableTextFragment} from '../types/rich-portable-text';
+import {articleFeedFragment} from '@/groq/documents/article-feed';
+import {richPortableTextFragment} from '@/groq/types/rich-portable-text';
 
 export const articleFragment = `//groq
     _id,

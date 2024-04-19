@@ -1,5 +1,5 @@
-import {externalLinkFragment} from '../types/external-link';
-import {internalLinkFragment} from '../types/internal-link';
+import {externalLinkFragment} from '@/groq/types/external-link';
+import {internalLinkFragment} from '@/groq/types/internal-link';
 
 export const websiteFragment = `//groq
     _id,

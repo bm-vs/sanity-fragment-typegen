@@ -1,4 +1,4 @@
-import {productInCardFragment} from '../documents/product-in-card';
+import {productInCardFragment} from '@/groq/documents/product-in-card';
 
 export const productListSelectionFragment = `//groq
 	_type,

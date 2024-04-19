@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -10,7 +11,11 @@
     "moduleDetection": "force",
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "@/groq/*": ["groq/*"],
+      "@/schema/*": ["schema/*"],
+    },
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

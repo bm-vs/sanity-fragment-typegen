@@ -1,5 +1,5 @@
-import {externalLinkFragment} from './external-link';
-import {internalLinkFragment} from './internal-link';
+import {externalLinkFragment} from '@/groq/types/external-link';
+import {internalLinkFragment} from '@/groq/types/internal-link';
 
 export const contentHeaderFragment = `//groq
 	_type,

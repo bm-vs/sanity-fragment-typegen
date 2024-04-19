@@ -1,7 +1,7 @@
 import groq from 'groq';
 
-import {pageFragment} from './documents/page';
-import {websiteFragment} from './documents/website';
+import {pageFragment} from '@/groq/documents/page';
+import {websiteFragment} from '@/groq/documents/website';
 
 export const getPageBySlugQuery = groq`
 	{
