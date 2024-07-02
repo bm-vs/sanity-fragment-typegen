@@ -118,7 +118,7 @@ export const articleWithFeedFragment = `//groq
         _id,
         name
     }
-    _ts: ArticleWithFeed
+    "_ts": ArticleWithFeed
 `;
 ```
 
@@ -132,7 +132,7 @@ articles: Array<{
         _id: string;
         name: string | null;
     } | null;
-    _ts: "ArticleWithFeed";
+    "_ts": "ArticleWithFeed";
 }>;
 ```
 
@@ -159,7 +159,7 @@ export type ArticleWithFeed = {
         _id: string;
         name: string | null;
     } | null;
-    _ts: "ArticleWithFeed";
+    "_ts": "ArticleWithFeed";
 };
 ```
 
